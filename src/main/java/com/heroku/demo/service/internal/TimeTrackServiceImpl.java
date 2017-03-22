@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,6 +28,10 @@ public class TimeTrackServiceImpl implements TimeTrackService {
     @Transactional(readOnly = false)
     public void addTimeTrack(TimeTrackDto timeTrackDto) {
         TimeTrack timeTrack = mapper.fromDto(timeTrackDto);
+
+        // FIXME Employee from login context...
+        timeTrack.setEmployee("Dummy Employee");
+        timeTrack.setCreationTs(LocalDateTime.now());
         repository.save(timeTrack);
     }
 

@@ -18,8 +18,11 @@ package com.heroku.demo.web;
 import javax.validation.Valid;
 import java.util.List;
 
+import com.heroku.demo.domain.Station;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
+import com.heroku.demo.service.TimeTrackDto;
+import com.heroku.demo.service.TimeTrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,27 +35,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/mvc")
 public class HomeController {
 
-    private TimeTrackRepository repository;
+    private TimeTrackService service;
 
     @Autowired
-    public HomeController(TimeTrackRepository repository) {
-        this.repository = repository;
+    public HomeController(TimeTrackService theService) {
+        this.service = theService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(ModelMap model) {
-        List<TimeTrack> timeTracks = repository.findAll();
+        List<TimeTrackDto> timeTracks = service.listTimeTracks();
         model.addAttribute("timeTracks", timeTracks);
         model.addAttribute("insertRecord", new TimeTrack());
+        model.addAttribute("stationTypes", Station.values());
         return "home";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String insertData(ModelMap model, 
-                             @ModelAttribute("insertRecord") @Valid TimeTrack timeTrack,
+                             @ModelAttribute("insertRecord") @Valid TimeTrackDto timeTrack,
                              BindingResult result) {
         if (!result.hasErrors()) {
-            repository.save(timeTrack);
+            service.addTimeTrack(timeTrack);
         }
         return home(model);
     }
