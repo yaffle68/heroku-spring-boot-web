@@ -9,12 +9,17 @@ import org.springframework.context.annotation.Profile;
 import javax.sql.DataSource;
 
 @Configuration
-@Profile("postgres")
 public class DatabaseConfig {
     @Bean
+    @Profile("postgres")
     @Primary
     @ConfigurationProperties(prefix = "custom.spring.datasource")
     public DataSource dataSource() {
         return new org.apache.tomcat.jdbc.pool.DataSource();
+    }
+
+    @Bean
+    LocalDateTimeConverter localDateTimeConverter() {
+        return new LocalDateTimeConverter();
     }
 }

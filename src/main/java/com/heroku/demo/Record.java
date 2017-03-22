@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Record {
 
@@ -16,6 +18,10 @@ public class Record {
     @NotEmpty
     private String data;
 
+    private LocalDateTime start;
+
+    private LocalDateTime end;
+
     public String getData() {
         return data;
     }
@@ -24,4 +30,19 @@ public class Record {
         this.data = data;
     }
 
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public void setStart(LocalDateTime start) {
+        this.start = start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public void setEnd(LocalDateTime end) {
+        this.end = end;
+    }
 }
