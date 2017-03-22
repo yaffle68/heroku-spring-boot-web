@@ -18,9 +18,4 @@ public class DatabaseConfig {
     public DataSource dataSource() {
         return new org.apache.tomcat.jdbc.pool.DataSource();
     }
-
-    @Bean
-    LocalDateTimeConverter localDateTimeConverter() {
-        return new LocalDateTimeConverter();
-    }
 }
