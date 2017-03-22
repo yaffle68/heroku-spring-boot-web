@@ -18,3 +18,5 @@ Based on article [here](https://devcenter.heroku.com/articles/deploying-spring-b
 MVC Interface [here](https://spring-boot-web-19980.herokuapp.com/mvc "spring-boot-web-19980") under the name spring-boot-web-19980
 
 REST Interface [here](https://spring-boot-web-19980.herokuapp.com/rest/timetracks "spring-boot-web-19980") under the name spring-boot-web-19980
+
+Heroku Dataclip [here](https://dataclips.heroku.com/olnokyerakgckownplmyqquybitf-record-1 "Dataclip")
