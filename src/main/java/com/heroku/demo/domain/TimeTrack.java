@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Entity
-public class Record {
+public class TimeTrack {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

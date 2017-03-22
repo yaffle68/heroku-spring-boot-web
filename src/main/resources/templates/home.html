@@ -55,10 +55,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="record : ${records}">
-                        <td th:text="${record.data}">Some text</td>
-                        <td th:text="${record.startTs}">Some timestamp</td>
-                        <td th:text="${record.endTs}">Some timestamp</td>
+                    <tr th:each="timeTrack : ${timeTracks}">
+                        <td th:text="${timeTrack.data}">Some text</td>
+                        <td th:text="${timeTrack.startTs}">Some timestamp</td>
+                        <td th:text="${timeTrack.endTs}">Some timestamp</td>
                     </tr>
                 </tbody>
             </table>
