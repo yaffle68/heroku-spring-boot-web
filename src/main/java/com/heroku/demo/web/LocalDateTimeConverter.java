@@ -1,4 +1,4 @@
-package com.heroku.demo;
+package com.heroku.demo.web;
 
 import org.springframework.core.convert.converter.Converter;
 

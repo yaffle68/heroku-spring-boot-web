@@ -1,5 +1,6 @@
-package com.heroku.demo;
+package com.heroku.demo.config;
 
+import com.heroku.demo.web.LocalDateTimeConverter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

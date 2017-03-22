@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.heroku.demo;
+package com.heroku.demo.web;
 
 import javax.validation.Valid;
 import java.util.List;
 
+import com.heroku.demo.domain.Record;
+import com.heroku.demo.domain.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
