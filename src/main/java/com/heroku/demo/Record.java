@@ -18,9 +18,9 @@ public class Record {
     @NotEmpty
     private String data;
 
-    private LocalDateTime start;
+    private LocalDateTime startTs;
 
-    private LocalDateTime end;
+    private LocalDateTime endTs;
 
     public String getData() {
         return data;
@@ -30,19 +30,19 @@ public class Record {
         this.data = data;
     }
 
-    public LocalDateTime getStart() {
-        return start;
+    public LocalDateTime getStartTs() {
+        return startTs;
     }
 
-    public void setStart(LocalDateTime start) {
-        this.start = start;
+    public void setStartTs(LocalDateTime startTs) {
+        this.startTs = startTs;
     }
 
-    public LocalDateTime getEnd() {
-        return end;
+    public LocalDateTime getEndTs() {
+        return endTs;
     }
 
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
+    public void setEndTs(LocalDateTime endTs) {
+        this.endTs = endTs;
     }
 }
