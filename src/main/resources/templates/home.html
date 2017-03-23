@@ -16,6 +16,8 @@
 -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Spring Boot Heroku Example</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Latest compiled and minified CSS -->
@@ -36,6 +38,7 @@
                 <div class="form-group">
                     <label for="data">Record to insert</label>
                     <input id="data" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{data}" />
+
                     <label for="startTs">Start</label>
                     <input id="startTs" type="datetime-local" class="form-control" placeholder="Lorem ipsum" th:field="*{startTs}" />
                     <label for="endTs">End</label>
