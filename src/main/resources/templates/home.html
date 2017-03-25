@@ -36,8 +36,6 @@
         <div class="col-md-12 col-lg-6">
             <form th:object="${insertRecord}" method="POST">
                 <div class="form-group">
-                    <label for="data">Record to insert</label>
-                    <input id="data" type="text" class="form-control" placeholder="Lorem ipsum" th:field="*{data}" />
 
                     <label for="startTs">Start</label>
                     <input id="startTs" type="datetime-local" class="form-control" placeholder="Lorem ipsum" th:field="*{startTs}" />
@@ -60,7 +58,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Data</th>
                         <th>Employee</th>
                         <th>Station</th>
                         <th>Start</th>
@@ -69,7 +66,6 @@
                 </thead>
                 <tbody>
                     <tr th:each="timeTrack : ${timeTracks}">
-                        <td th:text="${timeTrack.data}">Some text</td>
                         <td th:text="${timeTrack.employee}">employee</td>
                         <td th:text="${timeTrack.station}">station</td>
                         <td th:text="${timeTrack.startTs}">startTs</td>

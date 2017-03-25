@@ -8,7 +8,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Created by simon.harding on 22.03.2017.
@@ -17,37 +19,38 @@ import java.time.LocalDateTime;
 public class TimeTrackDto {
     private long id;
 
-    private String data;
     private LocalDateTime creationTs;
-    private LocalDateTime startTs;
-    private LocalDateTime endTs;
+    private LocalDate date;
+    private LocalTime startTs;
+    private LocalTime endTs;
     private Station station;
     private String employee;
     private long replacedBy;
     private boolean editable;
     private Status status;
 
-    public String getData() {
-        return data;
+
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public LocalDateTime getStartTs() {
+    public LocalTime getStartTs() {
         return startTs;
     }
 
-    public void setStartTs(LocalDateTime startTs) {
+    public void setStartTs(LocalTime startTs) {
         this.startTs = startTs;
     }
 
-    public LocalDateTime getEndTs() {
+    public LocalTime getEndTs() {
         return endTs;
     }
 
-    public void setEndTs(LocalDateTime endTs) {
+    public void setEndTs(LocalTime endTs) {
         this.endTs = endTs;
     }
 

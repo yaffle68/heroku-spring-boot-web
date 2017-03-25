@@ -1,5 +1,6 @@
 package com.heroku.demo.service.internal;
 
+import com.heroku.demo.domain.Status;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
 import com.heroku.demo.mapping.TimeTrackMapper;
@@ -32,6 +33,7 @@ public class TimeTrackServiceImpl implements TimeTrackService {
         // FIXME Employee from login context...
         timeTrack.setEmployee("Dummy Employee");
         timeTrack.setCreationTs(LocalDateTime.now());
+        timeTrack.setStatus(Status.INITIAL);
         repository.save(timeTrack);
     }
 
