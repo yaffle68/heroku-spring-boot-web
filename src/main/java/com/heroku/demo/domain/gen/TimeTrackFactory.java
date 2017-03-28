@@ -3,7 +3,6 @@ package com.heroku.demo.domain.gen;
 import com.google.common.collect.ContiguousSet;
 import com.google.common.collect.DiscreteDomain;
 import com.google.common.collect.Range;
-import com.google.common.collect.RangeSet;
 import com.heroku.demo.domain.Station;
 import com.heroku.demo.domain.Status;
 import com.heroku.demo.domain.TimeTrack;

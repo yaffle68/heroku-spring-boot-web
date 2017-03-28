@@ -1,13 +1,9 @@
 package com.heroku.demo.service;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.heroku.demo.domain.Station;
 import com.heroku.demo.domain.Status;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,7 +16,10 @@ public class TimeTrackDto {
     private long id;
 
     private LocalDateTime creationTs;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
+
     private LocalTime startTs;
     private LocalTime endTs;
     private Station station;

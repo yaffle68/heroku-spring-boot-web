@@ -29,7 +29,7 @@
 <body>
 <div class="container">
     <div class="page-header">
-        <h1>Timetracks</h1>
+        <h1>Heures Travaillées</h1>
     </div>
 
     <div class="row">
@@ -37,17 +37,25 @@
             <form th:object="${insertRecord}" method="POST">
                 <div class="form-group">
 
-                    <label for="startTs">Start</label>
-                    <input id="startTs" type="datetime-local" class="form-control" placeholder="Lorem ipsum" th:field="*{startTs}" />
-                    <label for="endTs">End</label>
-                    <input id="endTs" type="datetime-local" class="form-control" placeholder="Lorem ipsum" th:field="*{endTs}" />
+                    <label for="employee">Employée</label>
+                    <input id="employee" type="text" class="form-control" required="true" placeholder="Quelqu'un" th:field="*{employee}" />
+
+
+                    <label for="date">Date</label>
+                    <input id="date" type="date" class="form-control" required="true" placeholder="Day" th:field="*{date}" />
+
+                    <label for="startTs">Début</label>
+                    <input id="startTs" type="time" class="form-control" required="true" placeholder="Lorem ipsum" th:field="*{startTs}" />
+                    <label for="endTs">Fin</label>
+                    <input id="endTs" type="time" class="form-control" required="true" placeholder="Lorem ipsum" th:field="*{endTs}" />
 
                     <label for="station">Station</label>
                     <select id="station" name="station">
-                        <option th:each="type : ${stationTypes}" th:value="${type}" th:text="${type}">Wireframe</option>
+                        <option th:each="type : ${stationTypes}" required="true" th:value="${type}" th:text="${type}">Wireframe</option>
                     </select>
+
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Ajouter</button>
             </form>
         </div>
     </div>
@@ -58,10 +66,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Employee</th>
+                        <th>Employé(e)</th>
                         <th>Station</th>
-                        <th>Start</th>
-                        <th>End</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                        <th>Créé</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -79,6 +89,7 @@
 </div>
 
 <!-- Latest compiled and minified JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
