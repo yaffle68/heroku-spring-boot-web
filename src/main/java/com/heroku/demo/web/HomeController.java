@@ -15,7 +15,9 @@
  */
 package com.heroku.demo.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 import com.heroku.demo.domain.Station;
@@ -42,8 +44,15 @@ public class HomeController {
         this.service = theService;
     }
 
+
+//    @RequestMapping(method = RequestMethod.GET, path = "/login")
+//    public String login() {
+//        return "login";
+//    }
+
+
     @RequestMapping(method = RequestMethod.GET)
-    public String home(ModelMap model) {
+    public String home(HttpServletRequest request, ModelMap model, Principal principal) {
         List<TimeTrackDto> timeTracks = service.listTimeTracks();
         model.addAttribute("timeTracks", timeTracks);
         model.addAttribute("insertRecord", new TimeTrack());
@@ -52,12 +61,12 @@ public class HomeController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String insertData(ModelMap model, 
+    public String  insertData(Principal principal, HttpServletRequest request, ModelMap model,
                              @ModelAttribute("insertRecord") @Valid TimeTrackDto timeTrack,
                              BindingResult result) {
         if (!result.hasErrors()) {
-            service.addTimeTrack(timeTrack);
+            service.addTimeTrack(timeTrack, principal.getName());
         }
-        return home(model);
+        return home(request, model, principal);
     }
 }

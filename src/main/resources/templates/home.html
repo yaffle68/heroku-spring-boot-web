@@ -27,6 +27,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
 </head>
 <body>
+
+<h1 th:inline="text">Salut [[${#httpServletRequest.remoteUser}]]!</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+
 <div class="container">
     <div class="page-header">
         <h1>Heures Travaillées</h1>
@@ -37,8 +44,8 @@
             <form th:object="${insertRecord}" method="POST">
                 <div class="form-group">
 
-                    <label for="employee">Employée</label>
-                    <input id="employee" type="text" class="form-control" required="true" placeholder="Quelqu'un" th:field="*{employee}" />
+                    <!--<label for="employee">Employée</label>-->
+                    <!--<input id="employee" type="text" class="form-control" required="true" placeholder="Quelqu'un" th:field="*{employee}" />-->
 
 
                     <label for="date">Date</label>
@@ -53,6 +60,8 @@
                     <select id="station" name="station">
                         <option th:each="type : ${stationTypes}" required="true" th:value="${type}" th:text="${type}">Wireframe</option>
                     </select>
+
+                    <input id="name" type="hidden" value="${#httpServletRequest.remoteUser}" th:field="*{employee}" />
 
                 </div>
                 <button type="submit" class="btn btn-default">Ajouter</button>
