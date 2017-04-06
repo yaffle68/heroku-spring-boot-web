@@ -25,12 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logout()
 //                .permitAll();
 
-
         http
                 .formLogin()
                 .defaultSuccessUrl("/mvc")
-
-//                .loginPage("/mvc/login")
+//                .loginPage("/login")
                 .permitAll()
                 .and()
                 .exceptionHandling()
@@ -38,12 +36,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
+                .antMatchers("/mvc/**").hasRole("EMPLOYEE")
                 .antMatchers("/rest/**").hasRole("EMPLOYEE")
                 .antMatchers("/mvc/**").hasRole("EMPLOYEE")
+                .antMatchers("/mvc").hasRole("EMPLOYEE")
                 .and()
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/login");
+
+//        http
+//                .formLogin()
+////                .defaultSuccessUrl("/mvc")
+//
+////                .loginPage("/mvc/login")
+//                .permitAll()
+//                .and()
+//                .exceptionHandling()
+//                .accessDeniedPage("/denied")
+//                .and()
+//                .authorizeRequests()
+//                .antMatchers("/resources/**").permitAll()
+//                .antMatchers("/**").hasRole("EMPLOYEE")
+////                .antMatchers("/rest/**").hasRole("EMPLOYEE")
+////                .antMatchers("/mvc/**").hasRole("EMPLOYEE")
+////                .antMatchers("/mvc").hasRole("EMPLOYEE")
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .logoutSuccessUrl("/login");
 
     }
 

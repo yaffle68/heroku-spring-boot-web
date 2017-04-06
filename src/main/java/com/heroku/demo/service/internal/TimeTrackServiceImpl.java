@@ -28,11 +28,11 @@ public class TimeTrackServiceImpl implements TimeTrackService {
 
     @Override
     @Transactional(readOnly = false)
-    public void addTimeTrack(TimeTrackDto timeTrackDto) {
+    public void addTimeTrack(TimeTrackDto timeTrackDto, String userName) {
         TimeTrack timeTrack = mapper.fromDto(timeTrackDto);
 
         // FIXME Employee from login context...
-
+        timeTrack.setEmployee(userName);
         timeTrack.setCreationTs(LocalDateTime.now());
         timeTrack.setStatus(Status.INITIAL);
         repository.save(timeTrack);

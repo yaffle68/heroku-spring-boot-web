@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface TimeTrackService {
 
-    public void addTimeTrack(TimeTrackDto timeTrack);
+    public void addTimeTrack(TimeTrackDto timeTrack, String userName);
 
     public List<TimeTrackDto> listTimeTracks();
 }

@@ -29,7 +29,7 @@
 <body>
 
 <h1 th:inline="text">Salut [[${#httpServletRequest.remoteUser}]]!</h1>
-<form th:action="@{/logout}" method="post">
+<form th:action="@{/logout}" method="POST">
     <input type="submit" value="Sign Out"/>
 </form>
 
@@ -41,7 +41,7 @@
 
     <div class="row">
         <div class="col-md-12 col-lg-6">
-            <form th:object="${insertRecord}" method="POST">
+             <form th:action="@{/mvc}" th:object="${insertRecord}" method="POST">
                 <div class="form-group">
 
                     <!--<label for="employee">Employée</label>-->
