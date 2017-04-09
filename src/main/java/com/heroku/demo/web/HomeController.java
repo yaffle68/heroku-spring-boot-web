@@ -45,10 +45,10 @@ public class HomeController {
     }
 
 
-//    @RequestMapping(method = RequestMethod.GET, path = "/login")
-//    public String login() {
-//        return "login";
-//    }
+    @RequestMapping(method = RequestMethod.GET, path = "/login")
+    public String login() {
+        return "login";
+    }
 
 
     @RequestMapping(method = RequestMethod.GET)

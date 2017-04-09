@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .defaultSuccessUrl("/mvc")
-//                .loginPage("/login")
+                .loginPage("/mvc/login")
                 .permitAll()
                 .and()
                 .exceptionHandling()
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/mvc/login");
 
 //        http
 //                .formLogin()
