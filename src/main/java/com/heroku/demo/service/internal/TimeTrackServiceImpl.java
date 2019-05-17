@@ -1,8 +1,10 @@
 package com.heroku.demo.service.internal;
 
+import ch.hvv.apps.hourcalculator.data.HoursEntry;
 import com.heroku.demo.domain.Status;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
+import com.heroku.demo.mapping.HoursEntryMapper;
 import com.heroku.demo.mapping.TimeTrackMapper;
 import com.heroku.demo.service.TimeTrackDto;
 import com.heroku.demo.service.TimeTrackService;
@@ -24,6 +26,9 @@ public class TimeTrackServiceImpl implements TimeTrackService {
     TimeTrackMapper mapper;
 
     @Autowired
+    HoursEntryMapper hoursEntryMapper;
+
+    @Autowired
     TimeTrackRepository repository;
 
     @Override
@@ -43,4 +48,11 @@ public class TimeTrackServiceImpl implements TimeTrackService {
     public List<TimeTrackDto> listTimeTracks() {
         return mapper.toDtos(repository.findAll());
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<HoursEntry> listHoursEntries() {
+        return hoursEntryMapper.toDtos(repository.findAll());
+    }
+
 }

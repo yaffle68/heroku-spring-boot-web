@@ -79,6 +79,12 @@
             <version>2.6.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>ch.hvv.apps</groupId>
+            <artifactId>timetracks</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 
         <!-- Guava -->
         <dependency>

@@ -19,8 +19,9 @@ public class MappingConfig {
     @Bean
     public DozerBeanMapperFactoryBean dozerBeanMapper() {
         DozerBeanMapperFactoryBean factory = new DozerBeanMapperFactoryBean();
-        Resource resource = m_resourceLoader.getResource("classpath:/dozerJdk8Converters.xml");
-        factory.setMappingFiles(new Resource[]{resource});
+        Resource jdk8Mappings = m_resourceLoader.getResource("classpath:/dozerJdk8Converters.xml");
+        Resource customMappings = m_resourceLoader.getResource("classpath:/Dozer.xml");
+        factory.setMappingFiles(new Resource[]{jdk8Mappings,  customMappings});
         return factory;
     }
 }

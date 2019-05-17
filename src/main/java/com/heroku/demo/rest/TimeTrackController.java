@@ -1,5 +1,6 @@
 package com.heroku.demo.rest;
 
+import ch.hvv.apps.hourcalculator.data.HoursEntry;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
 import com.heroku.demo.service.TimeTrackDto;
@@ -20,9 +21,6 @@ import java.util.List;
 public class TimeTrackController {
 
     @Autowired
-    TimeTrackRepository timeTrackRepository;
-
-    @Autowired
     TimeTrackService service;
 
     @ApiOperation(value = "Lists all TimeTracks",
@@ -33,5 +31,10 @@ public class TimeTrackController {
     public List<TimeTrackDto> getTimetracks() {
         return service.listTimeTracks();
 //        return timeTrackRepository.findAll();
+    }
+
+    @GetMapping("hoursentries")
+    public List<HoursEntry> getHoursEntries() {
+        return service.listHoursEntries();
     }
 }
