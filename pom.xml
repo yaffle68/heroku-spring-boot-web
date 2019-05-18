@@ -144,6 +144,11 @@
             <id>spring-milestone</id>
             <url>https://repo.spring.io/libs-release</url>
         </repository>
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository>
     </repositories>
 
     <pluginRepositories>
