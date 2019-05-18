@@ -12,8 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,7 +56,17 @@ public class TimeTrackServiceImpl implements TimeTrackService {
     @Override
     @Transactional(readOnly = true)
     public List<HoursEntry> listHoursEntries() {
-        return hoursEntryMapper.toDtos(repository.findAll());
+
+        List<HoursEntry> mappedHoursEntries = hoursEntryMapper.toDtos(repository.findAll());
+        mappedHoursEntries.forEach(this::calculateHours);
+        return mappedHoursEntries;
     }
 
+    private void calculateHours(HoursEntry entry) {
+        LocalTime from = entry.getFrom();
+        LocalTime to = entry.getTo();
+        BigDecimal minutesDifference = BigDecimal.valueOf(ChronoUnit.MINUTES.between(from, to)).setScale(2);
+
+        entry.setHours(minutesDifference.divide(BigDecimal.valueOf(60).setScale(2), RoundingMode.HALF_UP).setScale(2));
+     }
 }
