@@ -1,12 +1,15 @@
 package com.heroku.demo.rest;
 
 import ch.hvv.apps.hourcalculator.data.HoursEntry;
+import ch.hvv.apps.hourcalculator.data.HoursEntryList;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
 import com.heroku.demo.service.TimeTrackDto;
 import com.heroku.demo.service.TimeTrackService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +37,7 @@ public class TimeTrackController {
     }
 
     @GetMapping("hoursentries")
-    public List<HoursEntry> getHoursEntries() {
-        return service.listHoursEntries();
+    public ResponseEntity<HoursEntryList> getHoursEntries() {
+        return new ResponseEntity<HoursEntryList>(service.listHoursEntries(), HttpStatus.OK);
     }
 }

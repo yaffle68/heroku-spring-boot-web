@@ -1,6 +1,9 @@
 package com.heroku.demo.service.internal;
 
 import ch.hvv.apps.hourcalculator.data.HoursEntry;
+import ch.hvv.apps.hourcalculator.data.HoursEntryList;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.heroku.demo.domain.Status;
 import com.heroku.demo.domain.TimeTrack;
 import com.heroku.demo.domain.TimeTrackRepository;
@@ -17,7 +20,6 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +36,12 @@ public class TimeTrackServiceImpl implements TimeTrackService {
 
     @Autowired
     TimeTrackRepository repository;
+
+    public TimeTrackServiceImpl() {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+//        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+    }
 
     @Override
     @Transactional(readOnly = false)
@@ -55,11 +63,11 @@ public class TimeTrackServiceImpl implements TimeTrackService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<HoursEntry> listHoursEntries() {
+    public HoursEntryList listHoursEntries() {
 
         List<HoursEntry> mappedHoursEntries = hoursEntryMapper.toDtos(repository.findAll());
         mappedHoursEntries.forEach(this::calculateHours);
-        return mappedHoursEntries;
+        return new HoursEntryList(mappedHoursEntries);
     }
 
     private void calculateHours(HoursEntry entry) {

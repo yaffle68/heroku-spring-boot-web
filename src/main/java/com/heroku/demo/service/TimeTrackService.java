@@ -1,6 +1,6 @@
 package com.heroku.demo.service;
 
-import ch.hvv.apps.hourcalculator.data.HoursEntry;
+import ch.hvv.apps.hourcalculator.data.HoursEntryList;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,5 +15,5 @@ public interface TimeTrackService {
     public List<TimeTrackDto> listTimeTracks();
 
     @Transactional(readOnly = true)
-    List<HoursEntry> listHoursEntries();
+    HoursEntryList listHoursEntries();
 }
