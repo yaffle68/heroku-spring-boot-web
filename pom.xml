@@ -164,9 +164,9 @@
                 <version>2.0.8</version>
                 <configuration>
                     <appName>boiling-meadow-36749</appName>
-                    <!--<processTypes>-->
-                        <!--<web>java -Dspring.profiles.active=postgres -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar</web>-->
-                    <!--</processTypes>-->
+                    <processTypes>
+                        <web>java -Dspring.profiles.active=postgres -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar</web>
+                    </processTypes>
                 </configuration>
 
             </plugin>
