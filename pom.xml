@@ -70,14 +70,13 @@
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>RELEASE</version>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>RELEASE</version>
-
         </dependency>
 
         <!-- Swagger -->
@@ -112,6 +111,13 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <version>2.0.1.RELEASE</version>
+        </dependency>
+
 <!--
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -141,6 +147,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+
+        <!-- Use the latest version whenever possible. -->
+        <jackson.version>2.10.0</jackson.version>
     </properties>
 
     <build>
